@@ -161,6 +161,9 @@ const minimaxAlphaBeta = (state, depth, maximizingPlayer) => {
       const possibleStates = state.nextStates()
       const minimizingPlayer = maximizingPlayer === 'x' ? 'o' : 'x'
       const currentPlayer = state.nextMovePlayer
+      // if its the maxPlayer loop over possibleStates
+      // and recursively call minimaxAlphaBetaInner
+      // with the new best alpha
       if (currentPlayer === maximizingPlayer) {
         let currentBest = alpha
         for (let x = 0; x < possibleStates.length; x++) {
@@ -179,6 +182,9 @@ const minimaxAlphaBeta = (state, depth, maximizingPlayer) => {
         }
         return currentBest
       } else {
+        // if its the minPlayer loop over possibleStates
+        // and recursively call minimaxAlphaBetaInner
+        // with the new best beta
         let currentBest = beta
         for (let x = 0; x < possibleStates.length; x++) {
           const futureState = possibleStates[x]
